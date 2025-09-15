@@ -21,8 +21,9 @@ class Category
     {
         foreach($data as $key => $value) {
 
+            // $strPropertyName = '_' . str_replace('category_', '', $key);
             $strPropertyName = '_' . $key;
-            
+
             if(property_exists($this, $strPropertyName)) {
 
                 $this->$strPropertyName = $value;

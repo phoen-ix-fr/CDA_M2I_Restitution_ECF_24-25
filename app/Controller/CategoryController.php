@@ -20,6 +20,9 @@ class CategoryController
         $objCategoryModel = new CategoryModel();
         $arrCategories = $objCategoryModel->findAll();
 
-        $smarty->display('index.tpl');
+        // Transmission d'une variable vers la vue
+        $smarty->assign('categories', $arrCategories);
+
+        $smarty->display('category/list.tpl');
     }
 }

@@ -1,3 +1,29 @@
+<?php
+/* Smarty version 5.5.2, created on 2025-09-15 16:54:45
+  from 'file:layout.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.2',
+  'unifunc' => 'content_68c828b526fe37_16241895',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2793f23eb7e00896d88b72c38831c40b21b55985' => 
+    array (
+      0 => 'layout.tpl',
+      1 => 1757948007,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_68c828b526fe37_16241895 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';
+$_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
+?>
 <!doctype html>
 <html lang="fr">
 
@@ -47,29 +73,10 @@
 
     <!-- Main -->
     <main class="container py-4 flex-grow-1 mt-5">
-        <div class="d-flex justify-content-between mb-3">
-            <h2>Gestion des catégories</h2>
-            <button class="btn btn-success">Ajouter une catégorie</button>
-        </div>
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Clavier</td>
-                    <td>
-                        <button class="btn btn-sm btn-primary">Modifier</button>
-                        <button class="btn btn-sm btn-danger">Supprimer</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <?php 
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_169593615868c828b526f3e1_74685685', 'main');
+?>
+
     </main>
 
 
@@ -78,11 +85,22 @@
         <small>&copy; 2025 Stock'o Folie - Tous droits réservés</small>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+    <?php echo '<script'; ?>
+ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" 
         crossorigin="anonymous">
-    </script>
+    <?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+/* {block 'main'} */
+class Block_169593615868c828b526f3e1_74685685 extends \Smarty\Runtime\Block
+{
+public function callBlock(\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';
+}
+}
+/* {/block 'main'} */
+}
