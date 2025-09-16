@@ -15,12 +15,24 @@ abstract class BaseEntity
     {
         foreach($data as $key => $value) {
 
-            // $strPropertyName = '_' . str_replace('category_', '', $key);
-            $strPropertyName = '_' . $key;
+            if(str_ends_with($key, '_id')) {
+                $strPropertyName = str_replace('_id', '', $key);
 
-            if(property_exists($this, $strPropertyName)) {
+                $strModelClass = 'M2i\\Ecf\\Model\\' . ucfirst($strPropertyName) . 'Model';
+                $objModel   = new $strModelClass();
+                $objForeign = $objModel->findByid($value);
 
-                $this->$strPropertyName = $value;
+                $strPropertyName = '_' . $strPropertyName;
+                $this->$strPropertyName = $objForeign;
+            }
+            else {
+                // $strPropertyName = '_' . str_replace('category_', '', $key);
+                $strPropertyName = '_' . $key;
+
+                if(property_exists($this, $strPropertyName)) {
+
+                    $this->$strPropertyName = $value;
+                }
             }
         }
     }

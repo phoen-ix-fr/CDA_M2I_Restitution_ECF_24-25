@@ -18,6 +18,8 @@ class CategoryController extends BaseController
     
     public function index()
     {      
+        $this->redirectIfNotLoggedIn();
+
         $objCategoryModel = new CategoryModel();
         $arrCategories = $objCategoryModel->findAll();
 
@@ -32,6 +34,8 @@ class CategoryController extends BaseController
 
     public function create()
     {
+        $this->redirectIfNotLoggedIn();
+
         if(count($_POST)) {
 
             // Valider le jeton CSRF
@@ -95,6 +99,8 @@ class CategoryController extends BaseController
 
     public function update()
     {
+        $this->redirectIfNotLoggedIn();
+
         $intCategoryId = $_GET['id']??null;
 
         if($intCategoryId) {
@@ -184,6 +190,8 @@ class CategoryController extends BaseController
 
     public function delete()
     {
+        $this->redirectIfNotLoggedIn();
+        
         if(count($_POST)) {
 
             // Valider le jeton CSRF

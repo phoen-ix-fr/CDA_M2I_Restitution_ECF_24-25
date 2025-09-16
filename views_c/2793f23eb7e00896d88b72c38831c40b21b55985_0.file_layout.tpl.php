@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.2, created on 2025-09-16 14:19:49
+/* Smarty version 5.5.2, created on 2025-09-16 14:50:04
   from 'file:layout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.2',
-  'unifunc' => 'content_68c955e5bdc012_94639447',
+  'unifunc' => 'content_68c95cfc4f6c04_11490381',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2793f23eb7e00896d88b72c38831c40b21b55985' => 
     array (
       0 => 'layout.tpl',
-      1 => 1758025143,
+      1 => 1758027000,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68c955e5bdc012_94639447 (\Smarty\Template $_smarty_tpl) {
+function content_68c95cfc4f6c04_11490381 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -53,10 +53,10 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
                 <div class="collapse navbar-collapse" id="navbarCollapse"> 
                     <ul class="navbar-nav me-auto mb-2 mb-md-0"> 
                         <li class="nav-item"> 
-                            <a class="nav-link active" aria-current="page" href="#">Produits</a>
+                            <a class="nav-link" aria-current="page" href="/index.php?controller=product">Produits</a>
                         </li>
                         <li class="nav-item"> 
-                            <a class="nav-link" aria-current="page" href="#">Catégories</a>
+                            <a class="nav-link" aria-current="page" href="/index.php?controller=product">Catégories</a>
                         </li>
                         <li class="nav-item"> 
                             <a class="nav-link" aria-current="page" href="#">Mouvements</a>
@@ -88,7 +88,7 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
         <?php }?>
 
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_31577634168c955e5bda0c2_70143113', 'main');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_153875535668c95cfc4eb157_43997167', 'main');
 ?>
 
     </main>
@@ -110,7 +110,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_31577634168c9
 
 </html><?php }
 /* {block 'main'} */
-class Block_31577634168c955e5bda0c2_70143113 extends \Smarty\Runtime\Block
+class Block_153875535668c95cfc4eb157_43997167 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';

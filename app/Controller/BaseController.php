@@ -76,4 +76,29 @@ abstract class BaseController
     {
         return filter_var(trim($input??""), FILTER_SANITIZE_SPECIAL_CHARS);
     }
+
+    protected function checkIfLoggedIn(): bool
+    {
+        return ($_SESSION['user']??null) != null;
+    }
+
+    protected function redirectIfNotLoggedIn()
+    {
+        if(!$this->checkIfLoggedIn()) {
+            $this->redirectTo('auth', 'login');
+        }
+    }
+
+    protected function checkUserRole($role): bool
+    {
+        $objUser = $_SESSION['user'];
+        return $objUser->getRole() === $role;
+    }
+
+    protected function redirectIfUserHasNotRole($role, $controller, $action)
+    {
+        if(!$this->checkUserRole($role)) {
+            $this->redirectTo($controller, $action);
+        }
+    }
 }
