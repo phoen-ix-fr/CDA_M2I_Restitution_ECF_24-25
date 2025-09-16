@@ -21,6 +21,6 @@ class CategoryController extends BaseController
 
     public function create()
     {
-        
+        $this->_smarty->display('category/create.tpl');
     }
 }
