@@ -210,12 +210,12 @@ class CategoryController extends BaseController
                         if($this->_categoryModel->delete($intCategoryId)) {
 
                             // Afficher un message de confirmation si OK
-                            $_SESSION['msg'] = "La suppression s'est bien déroulée";
+                            $_SESSION['flashes']['success'] = "La suppression s'est bien déroulée";
                         }
                         else {
 
                             // Afficher un message d'erreur si NOK
-                            $_SESSION['msg'] = "Une erreur est survenue lors de la suppresion";                            
+                            $_SESSION['flashes']['danger'] = "Une erreur est survenue lors de la suppresion";                            
                         }
                     }
                 }

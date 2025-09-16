@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.2, created on 2025-09-16 12:21:29
+/* Smarty version 5.5.2, created on 2025-09-16 12:24:50
   from 'file:layout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.2',
-  'unifunc' => 'content_68c93a29b5a2a7_26417040',
+  'unifunc' => 'content_68c93af211f0b2_65552405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2793f23eb7e00896d88b72c38831c40b21b55985' => 
     array (
       0 => 'layout.tpl',
-      1 => 1758018086,
+      1 => 1758018288,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68c93a29b5a2a7_26417040 (\Smarty\Template $_smarty_tpl) {
+function content_68c93af211f0b2_65552405 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -73,15 +73,15 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 
     <!-- Main -->
     <main class="container py-4 flex-grow-1 mt-5">
-        <?php if ((true && ($_smarty_tpl->hasVariable('flashes') && null !== ($_smarty_tpl->getValue('flashes') ?? null)))) {?>
-        <div class="alert alert-primary">
-            <?php echo $_smarty_tpl->getValue('flashes');?>
+        <?php if ((true && (true && null !== ($_smarty_tpl->getValue('flashes')['success'] ?? null)))) {?>
+        <div class="alert alert-success">
+            <?php echo $_smarty_tpl->getValue('flashes')['success'];?>
 
         </div>
         <?php }?>
 
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_168644525468c93a29b57258_84320885', 'main');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_38332408768c93af211d192_81563257', 'main');
 ?>
 
     </main>
@@ -103,7 +103,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_168644525468c
 
 </html><?php }
 /* {block 'main'} */
-class Block_168644525468c93a29b57258_84320885 extends \Smarty\Runtime\Block
+class Block_38332408768c93af211d192_81563257 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';

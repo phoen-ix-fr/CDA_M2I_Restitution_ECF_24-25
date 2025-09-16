@@ -47,9 +47,15 @@
 
     <!-- Main -->
     <main class="container py-4 flex-grow-1 mt-5">
-        {if isset($flashes)}
-        <div class="alert alert-primary">
-            {$flashes}
+        {if isset($flashes.success)}
+        <div class="alert alert-success">
+            {$flashes.success}
+        </div>
+        {/if}
+        
+        {if isset($flashes.danger)}
+        <div class="alert alert-danger">
+            {$flashes.danger}
         </div>
         {/if}
 
