@@ -7,7 +7,7 @@
     <a href="/index.php?controller=category&action=index" class="btn btn-success">Retourner à la liste des catégories</a>
 </div>
 
-<form>
+<form action="/index.php?controller=category&action=create" method="POST">
 
     <div class="mb-3">
         <label for="name" class="form-label">Nom de la catégorie</label>

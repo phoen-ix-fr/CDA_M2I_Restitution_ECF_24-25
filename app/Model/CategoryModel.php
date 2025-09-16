@@ -34,4 +34,21 @@ class CategoryModel
 
         return $arrObjCategories;
     }
+
+    public function insert(array $data): ?Category
+    {
+        $sqlQuery = "INSERT INTO categories (name) VALUES (:name);";
+
+        $objStatement = $this->_pdo->prepare($sqlQuery);
+
+        $objStatement->bindValue('name', $data['name']);
+
+        $objStatement->execute();
+
+        // On récupère la nouvelle catégorie créée ici :
+        
+
+        // On retourne NULL si la catégorie n'a été pas été créée/trouvée
+        return null;
+    }
 }

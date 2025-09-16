@@ -21,6 +21,15 @@ class CategoryController extends BaseController
 
     public function create()
     {
+        if($_POST) {
+
+            $strName = trim($_POST['name']??"");
+
+            // Utilisation du CategoryModel pour créer la catégorie
+
+            // Si tout est OK, on redirige vers la liste des catégories
+        }
+
         $this->_smarty->display('category/create.tpl');
     }
 }
