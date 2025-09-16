@@ -8,6 +8,8 @@ define('APP_ROOT', dirname(__DIR__));
 // Chargement de l'autoloader de Composer
 require_once "../vendor/autoload.php";
 
+session_start();
+
 /*
 // require_once "../app/Controller/HomeController.php";
 use M2i\Ecf\Controller\HomeController;

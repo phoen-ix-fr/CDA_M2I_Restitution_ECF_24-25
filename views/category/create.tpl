@@ -10,7 +10,13 @@
 {if isset($errors.db)}
 <div class="alert alert-danger">
     {$errors.db}
-<div>
+</div>
+{/if}
+
+{if isset($errors.csrf)}
+<div class="alert alert-warning">
+    {$errors.csrf}
+</div>
 {/if}
 
 <form action="/index.php?controller=category&action=create" method="POST">
@@ -30,6 +36,8 @@
             {/if}
         </div>
     </div>
+
+    <input type="hidden" name="csrf_token" value="{$csrf}" />
 
     <button type="submit" class=" mt-3 btn btn-primary">Enregistrer</button>
 

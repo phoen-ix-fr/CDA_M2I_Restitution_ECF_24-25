@@ -25,55 +25,65 @@ class CategoryController extends BaseController
 
         if(count($_POST)) {
 
-            $strName = filter_var(trim($_POST['name']??""), FILTER_SANITIZE_SPECIAL_CHARS);
+            // Valider le jeton CSRF
+            if($this->validateCsrfToken($_POST['csrf_token'])) {
 
-            $objCategoryModel = new CategoryModel();
+                $strName = filter_var(trim($_POST['name']??""), FILTER_SANITIZE_SPECIAL_CHARS);
 
-            if(!$strName) {
-                
-                // Message d'erreur, la chaine est vide
-                $arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
-            }
-            else {
+                $objCategoryModel = new CategoryModel();
 
-                if(strlen($strName) > 160) {
-
-                    // Message d'erreur : taille max de 160
-                    $arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
+                if(!$strName) {
+                    
+                    // Message d'erreur, la chaine est vide
+                    $arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
                 }
                 else {
-                    
-                    if($objCategoryModel->findByName($strName)) {
 
-                        // Message d'erreur : une catégorie avec ce nom existe déjà
-                        $arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
+                    if(strlen($strName) > 160) {
+
+                        // Message d'erreur : taille max de 160
+                        $arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
                     }
                     else {
+                        
+                        if($objCategoryModel->findByName($strName)) {
 
-                        // Utilisation du CategoryModel pour créer la catégorie
-                        $objCategory = $objCategoryModel->insert([
-                            'name'  => $strName
-                        ]);
-
-                        // Si tout est OK, on redirige vers la liste des catégories
-                        if($objCategory) {
-
-                            header('Location: /index.php?controller=category&action=index');
-                            exit;
+                            // Message d'erreur : une catégorie avec ce nom existe déjà
+                            $arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
                         }
                         else {
 
-                            $arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
+                            // Utilisation du CategoryModel pour créer la catégorie
+                            $objCategory = $objCategoryModel->insert([
+                                'name'  => $strName
+                            ]);
+
+                            // Si tout est OK, on redirige vers la liste des catégories
+                            if($objCategory) {
+
+                                header('Location: /index.php?controller=category&action=index');
+                                exit;
+                            }
+                            else {
+
+                                $arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
+                            }
                         }
                     }
                 }
             }
+            else {
 
+                $arrErrors['csrf'] = "Veuillez actualiser la page avant d'envoyer le formulaire";
+            }   
         }
 
         $this->_smarty->assign('errors', $arrErrors); //< Transmet le tableau des erreurs à ma vue
         $this->_smarty->assign('data', $_POST);
-        
+
+        // Génération du token CSRF et envoi à la vue
+        $this->_smarty->assign('csrf', $this->generateCsrfToken());
+
         $this->_smarty->display('category/create.tpl');
     }
 }
