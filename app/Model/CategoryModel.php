@@ -5,16 +5,8 @@ namespace M2i\Ecf\Model;
 use M2i\Ecf\Entity\Category;
 use M2i\Ecf\Service\DatabaseService;
 
-class CategoryModel
+class CategoryModel extends BaseModel
 {
-    private $_pdo;
-
-    public function __construct()
-    {        
-        $this->_pdo = DatabaseService::getInstance();
-    }
-
-
     public function findAll(): array
     {
         $sqlQuery = "SELECT * FROM categories";

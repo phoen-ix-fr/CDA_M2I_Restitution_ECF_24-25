@@ -36,7 +36,7 @@
                             <a class="nav-link" aria-current="page" href="#">Mouvements</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Se déconnecter</a>
+                            <a class="nav-link" href="/index.php?controller=auth&action=logout">Se déconnecter</a>
                         </li>
                     </ul>
                 </div>

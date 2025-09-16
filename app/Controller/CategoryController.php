@@ -32,8 +32,6 @@ class CategoryController extends BaseController
 
     public function create()
     {
-        $arrErrors = [];
-
         if(count($_POST)) {
 
             // Valider le jeton CSRF
@@ -44,21 +42,21 @@ class CategoryController extends BaseController
                 if(!$strName) {
                     
                     // Message d'erreur, la chaine est vide
-                    $arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
+                    $this->_arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
                 }
                 else {
 
                     if(strlen($strName) > 160) {
 
                         // Message d'erreur : taille max de 160
-                        $arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
+                        $this->_arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
                     }
                     else {
                         
                         if($this->_categoryModel->findByName($strName)) {
 
                             // Message d'erreur : une catégorie avec ce nom existe déjà
-                            $arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
+                            $this->_arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
                         }
                         else {
 
@@ -70,12 +68,11 @@ class CategoryController extends BaseController
                             // Si tout est OK, on redirige vers la liste des catégories
                             if($objCategory) {
 
-                                header('Location: /index.php?controller=category&action=index');
-                                exit;
+                                $this->redirectTo('category', 'index');
                             }
                             else {
 
-                                $arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
+                                $this->_arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
                             }
                         }
                     }
@@ -83,13 +80,11 @@ class CategoryController extends BaseController
             }
             else {
 
-                $arrErrors['csrf'] = "Veuillez actualiser la page avant d'envoyer le formulaire";
+                $this->_arrErrors['csrf'] = "Veuillez actualiser la page avant d'envoyer le formulaire";
             }   
         }
 
         $this->_smarty->assign('action', 'create');
-
-        $this->_smarty->assign('errors', $arrErrors); //< Transmet le tableau des erreurs à ma vue
         $this->_smarty->assign('data', $_POST);
 
         // Génération du token CSRF et envoi à la vue
@@ -100,8 +95,6 @@ class CategoryController extends BaseController
 
     public function update()
     {
-        $arrErrors = [];
-
         $intCategoryId = $_GET['id']??null;
 
         if($intCategoryId) {
@@ -109,8 +102,6 @@ class CategoryController extends BaseController
             $objCategory = $this->_categoryModel->findById($intCategoryId);
 
             if($objCategory) {
-
-                $arrErrors = [];
 
                 if(count($_POST)) {
 
@@ -122,14 +113,14 @@ class CategoryController extends BaseController
                         if(!$strName) {
                             
                             // Message d'erreur, la chaine est vide
-                            $arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
+                            $this->_arrErrors['name'] = "Un nom de catégorie valide est nécessaire";
                         }
                         else {
 
                             if(strlen($strName) > 160) {
 
                                 // Message d'erreur : taille max de 160
-                                $arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
+                                $this->_arrErrors['name'] = "La taille ne doit pas dépasser 160 caractères";
                             }
                             else {
                                 
@@ -137,7 +128,7 @@ class CategoryController extends BaseController
                                     $this->_categoryModel->findByName($strName)) {
 
                                     // Message d'erreur : une catégorie avec ce nom existe déjà
-                                    $arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
+                                    $this->_arrErrors['name'] = "Une catégorie avec ce nom existe déjà";
                                 }
                                 else {
 
@@ -152,12 +143,11 @@ class CategoryController extends BaseController
                                     // Si tout est OK, on redirige vers la liste des catégories
                                     if($objCategory) {
 
-                                        header('Location: /index.php?controller=category&action=index');
-                                        exit;
+                                        $this->redirectTo('category', 'index');
                                     }
                                     else {
 
-                                        $arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
+                                        $this->_arrErrors['db'] = "Une erreur est survenue lors de la création en base. Veuillez réessayer";
                                     }
                                 }
                             }
@@ -165,7 +155,7 @@ class CategoryController extends BaseController
                     }
                     else {
 
-                        $arrErrors['csrf'] = "Veuillez actualiser la page avant d'envoyer le formulaire";
+                        $this->_arrErrors['csrf'] = "Veuillez actualiser la page avant d'envoyer le formulaire";
                     }   
                 }
 
@@ -175,7 +165,6 @@ class CategoryController extends BaseController
                 // Génération du token CSRF et envoi à la vue
                 $this->_smarty->assign('csrf', $this->generateCsrfToken());
                 
-                $this->_smarty->assign('errors', $arrErrors); //< Transmet le tableau des erreurs à ma vue
                 $this->_smarty->assign('data', [
                     'name'  => $_POST['name']??$objCategory->getName()
                 ]);
@@ -223,8 +212,7 @@ class CategoryController extends BaseController
         }
 
         // Redirige vers la liste des catégories dans tous les cas à la fin
-        header("Location: /index.php?controller=category&action=index");
-        exit;
+        $this->redirectTo('category', 'index');
     }
 
 }

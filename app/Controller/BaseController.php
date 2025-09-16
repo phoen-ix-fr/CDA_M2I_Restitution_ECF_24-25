@@ -7,6 +7,7 @@ use Smarty\Smarty;
 abstract class BaseController
 {
     protected Smarty $_smarty;
+    protected array $_arrErrors;
 
     public function __construct()
     {
@@ -17,6 +18,8 @@ abstract class BaseController
 
         $this->_smarty->setCacheDir(APP_ROOT . '/cache');
         $this->_smarty->setCompileDir(APP_ROOT . '/views_c');
+
+        $this->_arrErrors = [];
     }
 
     protected function displaySmarty(string $template)
@@ -28,6 +31,8 @@ abstract class BaseController
 
             unset($_SESSION['flashes']); //< Les messages flashes ont été consummés
         }
+
+        $this->_smarty->assign('errors', $this->_arrErrors); //< Transmet le tableau des erreurs à ma vue
 
         $this->_smarty->display($template);
     }
@@ -58,7 +63,17 @@ abstract class BaseController
 
     protected function redirectNotFound()
     {        
-        header('Location: /index.php?controller=error&action=httpNotFound');
+        $this->redirectTo('error', 'httpNotFound');
+    }
+
+    protected function redirectTo(string $controller, string $action)
+    {
+        header("Location: /index.php?controller=$controller&action=$action");
         exit;
+    }
+
+    protected function trimValidateSanitizeInput(?string $input): ?string
+    {
+        return filter_var(trim($input??""), FILTER_SANITIZE_SPECIAL_CHARS);
     }
 }
