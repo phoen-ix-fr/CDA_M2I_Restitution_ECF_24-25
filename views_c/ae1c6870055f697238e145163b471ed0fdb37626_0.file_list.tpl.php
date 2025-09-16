@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.2, created on 2025-09-16 10:03:30
+/* Smarty version 5.5.2, created on 2025-09-16 11:23:15
   from 'file:category/list.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.2',
-  'unifunc' => 'content_68c919d2e483d4_86102728',
+  'unifunc' => 'content_68c92c83487660_68472487',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ae1c6870055f697238e145163b471ed0fdb37626' => 
     array (
       0 => 'category/list.tpl',
-      1 => 1758009808,
+      1 => 1758014590,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68c919d2e483d4_86102728 (\Smarty\Template $_smarty_tpl) {
+function content_68c92c83487660_68472487 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views\\category';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_83317834868c919d2e35385_10816297', 'main');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_120423891368c92c8347feb0_87602819', 'main');
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, 'layout.tpl', $_smarty_current_dir);
 }
 /* {block 'main'} */
-class Block_83317834868c919d2e35385_10816297 extends \Smarty\Runtime\Block
+class Block_120423891368c92c8347feb0_87602819 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views\\category';
@@ -62,8 +62,9 @@ $foreach0DoElse = false;
                     <td><?php echo $_smarty_tpl->getValue('category')->getName();?>
 </td>
                     <td>
-                        <button class="btn btn-sm btn-primary">Modifier</button>
-                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                        <a href="/index.php?controller=category&action=update&id=<?php echo $_smarty_tpl->getValue('category')->getId();?>
+" class="btn btn-sm btn-primary">Modifier</a>
+                        <a class="btn btn-sm btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 <?php

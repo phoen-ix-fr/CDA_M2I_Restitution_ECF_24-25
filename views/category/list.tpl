@@ -19,8 +19,8 @@
                     <td>{$category->getId()}</td>
                     <td>{$category->getName()}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary">Modifier</button>
-                        <button class="btn btn-sm btn-danger">Supprimer</button>
+                        <a href="/index.php?controller=category&action=update&id={$category->getId()}" class="btn btn-sm btn-primary">Modifier</a>
+                        <a class="btn btn-sm btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 {/foreach}

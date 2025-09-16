@@ -104,4 +104,36 @@ class CategoryModel
         // On retourne NULL si la catégorie n'a été pas été créée/trouvée
         return null;
     }
+
+    public function update(int $id, array $data): ?Category
+    {
+        if(count($data) <= 0) return null;
+
+        $sqlQuery = "UPDATE categories SET ";
+        
+        foreach($data as $key => $value) {
+
+            $sqlQuery .= "$key = :$key, ";
+        }
+
+        $sqlQuery = rtrim($sqlQuery, ', ');
+
+        $sqlQuery .= " WHERE id = :id";
+
+        $objStatement = $this->_pdo->prepare($sqlQuery);
+        
+        foreach($data as $key => $value) {
+
+            $objStatement->bindValue($key, $value);
+        }
+
+        $objStatement->bindValue('id', $id);
+
+        if($objStatement->execute())
+        {
+            return $this->findById($id);
+        }
+
+        return null;
+    }
 }

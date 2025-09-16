@@ -42,4 +42,10 @@ abstract class BaseController
 
         return false;
     }
+
+    protected function redirectNotFound()
+    {        
+        header('Location: /index.php?controller=error&action=httpNotFound');
+        exit;
+    }
 }

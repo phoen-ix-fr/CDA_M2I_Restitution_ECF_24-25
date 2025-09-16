@@ -19,7 +19,7 @@
 </div>
 {/if}
 
-<form action="/index.php?controller=category&action=create" method="POST">
+<form action="/index.php?controller=category&action={$action}" method="POST">
 
     <div class="mb-3">
         <label for="name" class="form-label">Nom de la catégorie</label>
