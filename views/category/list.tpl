@@ -19,8 +19,23 @@
                     <td>{$category->getId()}</td>
                     <td>{$category->getName()}</td>
                     <td>
-                        <a href="/index.php?controller=category&action=update&id={$category->getId()}" class="btn btn-sm btn-primary">Modifier</a>
-                        <a class="btn btn-sm btn-danger">Supprimer</a>
+                        <div class="row">
+
+                            <div class="col-md-auto">
+                                <a href="/index.php?controller=category&action=update&id={$category->getId()}" class="btn btn-sm btn-primary">Modifier</a>
+                            </div>
+                            
+                            <form action="/index.php?controller=category&action=delete" method="POST" class="col-md-auto">
+
+                                <input type="hidden" name="id" value="{$category->getId()}" />
+
+                                <input type="hidden" name="csrf_token" value="{$csrf}" />
+
+                                <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+
+                            </form>  
+                        
+                        </div>
                     </td>
                 </tr>
                 {/foreach}

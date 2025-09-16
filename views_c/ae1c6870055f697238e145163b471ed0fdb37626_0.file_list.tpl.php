@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.2, created on 2025-09-16 11:23:15
+/* Smarty version 5.5.2, created on 2025-09-16 12:07:15
   from 'file:category/list.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.2',
-  'unifunc' => 'content_68c92c83487660_68472487',
+  'unifunc' => 'content_68c936d341d8f5_38817915',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ae1c6870055f697238e145163b471ed0fdb37626' => 
     array (
       0 => 'category/list.tpl',
-      1 => 1758014590,
+      1 => 1758017232,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,18 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68c92c83487660_68472487 (\Smarty\Template $_smarty_tpl) {
+function content_68c936d341d8f5_38817915 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views\\category';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, true);
 ?>
 
 
 <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_120423891368c92c8347feb0_87602819', 'main');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_2349482168c936d34173a1_26387767', 'main');
 $_smarty_tpl->getInheritance()->endChild($_smarty_tpl, 'layout.tpl', $_smarty_current_dir);
 }
 /* {block 'main'} */
-class Block_120423891368c92c8347feb0_87602819 extends \Smarty\Runtime\Block
+class Block_2349482168c936d34173a1_26387767 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views\\category';
@@ -62,9 +62,26 @@ $foreach0DoElse = false;
                     <td><?php echo $_smarty_tpl->getValue('category')->getName();?>
 </td>
                     <td>
-                        <a href="/index.php?controller=category&action=update&id=<?php echo $_smarty_tpl->getValue('category')->getId();?>
+                        <div class="row">
+
+                            <div class="col-md-auto">
+                                <a href="/index.php?controller=category&action=update&id=<?php echo $_smarty_tpl->getValue('category')->getId();?>
 " class="btn btn-sm btn-primary">Modifier</a>
-                        <a class="btn btn-sm btn-danger">Supprimer</a>
+                            </div>
+                            
+                            <form action="/index.php?controller=category&action=delete" method="POST" class="col-md-auto">
+
+                                <input type="hidden" name="id" value="<?php echo $_smarty_tpl->getValue('category')->getId();?>
+" />
+
+                                <input type="hidden" name="csrf_token" value="<?php echo $_smarty_tpl->getValue('csrf');?>
+" />
+
+                                <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
+
+                            </form>  
+                        
+                        </div>
                     </td>
                 </tr>
                 <?php

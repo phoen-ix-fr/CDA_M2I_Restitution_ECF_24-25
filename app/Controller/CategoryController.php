@@ -24,7 +24,10 @@ class CategoryController extends BaseController
         // Transmission d'une variable vers la vue
         $this->_smarty->assign('categories', $arrCategories);
 
-        $this->_smarty->display('category/list.tpl');
+        
+        $this->_smarty->assign('csrf', $this->generateCsrfToken());
+
+        $this->displaySmarty('category/list.tpl');
     }
 
     public function create()
@@ -92,7 +95,7 @@ class CategoryController extends BaseController
         // Génération du token CSRF et envoi à la vue
         $this->_smarty->assign('csrf', $this->generateCsrfToken());
 
-        $this->_smarty->display('category/create.tpl');
+        $this->displaySmarty('category/create.tpl');
     }
 
     public function update()
@@ -177,7 +180,7 @@ class CategoryController extends BaseController
                     'name'  => $_POST['name']??$objCategory->getName()
                 ]);
 
-                $this->_smarty->display('category/create.tpl');
+                $this->displaySmarty('category/create.tpl');
             }
             else {
 
@@ -188,6 +191,40 @@ class CategoryController extends BaseController
 
             $this->redirectNotFound();
         }
+    }
+
+    public function delete()
+    {
+        if(count($_POST)) {
+
+            // Valider le jeton CSRF
+            if($this->validateCsrfToken($_POST['csrf_token'])) {
+
+                $intCategoryId = $_POST['id']??null;
+
+                if($intCategoryId) {
+
+                    if($this->_categoryModel->findById($intCategoryId)) {
+
+                        // Supprimer en base..
+                        if($this->_categoryModel->delete($intCategoryId)) {
+
+                            // Afficher un message de confirmation si OK
+                            $_SESSION['msg'] = "La suppression s'est bien déroulée";
+                        }
+                        else {
+
+                            // Afficher un message d'erreur si NOK
+                            $_SESSION['msg'] = "Une erreur est survenue lors de la suppresion";                            
+                        }
+                    }
+                }
+            }
+        }
+
+        // Redirige vers la liste des catégories dans tous les cas à la fin
+        header("Location: /index.php?controller=category&action=index");
+        exit;
     }
 
 }

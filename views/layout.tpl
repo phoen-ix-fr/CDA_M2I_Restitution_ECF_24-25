@@ -47,6 +47,12 @@
 
     <!-- Main -->
     <main class="container py-4 flex-grow-1 mt-5">
+        {if isset($flashes)}
+        <div class="alert alert-primary">
+            {$flashes}
+        </div>
+        {/if}
+
         {block name=main}{/block}
     </main>
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 5.5.2, created on 2025-09-15 16:54:45
+/* Smarty version 5.5.2, created on 2025-09-16 12:21:29
   from 'file:layout.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   'version' => '5.5.2',
-  'unifunc' => 'content_68c828b526fe37_16241895',
+  'unifunc' => 'content_68c93a29b5a2a7_26417040',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2793f23eb7e00896d88b72c38831c40b21b55985' => 
     array (
       0 => 'layout.tpl',
-      1 => 1757948007,
+      1 => 1758018086,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
   array (
   ),
 ))) {
-function content_68c828b526fe37_16241895 (\Smarty\Template $_smarty_tpl) {
+function content_68c93a29b5a2a7_26417040 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';
 $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 ?>
@@ -73,8 +73,15 @@ $_smarty_tpl->getInheritance()->init($_smarty_tpl, false);
 
     <!-- Main -->
     <main class="container py-4 flex-grow-1 mt-5">
+        <?php if ((true && ($_smarty_tpl->hasVariable('flashes') && null !== ($_smarty_tpl->getValue('flashes') ?? null)))) {?>
+        <div class="alert alert-primary">
+            <?php echo $_smarty_tpl->getValue('flashes');?>
+
+        </div>
+        <?php }?>
+
         <?php 
-$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_169593615868c828b526f3e1_74685685', 'main');
+$_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_168644525468c93a29b57258_84320885', 'main');
 ?>
 
     </main>
@@ -96,7 +103,7 @@ $_smarty_tpl->getInheritance()->instanceBlock($_smarty_tpl, 'Block_169593615868c
 
 </html><?php }
 /* {block 'main'} */
-class Block_169593615868c828b526f3e1_74685685 extends \Smarty\Runtime\Block
+class Block_168644525468c93a29b57258_84320885 extends \Smarty\Runtime\Block
 {
 public function callBlock(\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = 'C:\\Users\\Karhe\\Documents\\DevWorkspace\\ecf25\\__RESTITUTION\\views';

@@ -136,4 +136,15 @@ class CategoryModel
 
         return null;
     }
+
+    public function delete(int $id): bool
+    {
+        $sqlQuery = "DELETE FROM categories WHERE id = :id";
+
+        $objStatement = $this->_pdo->prepare($sqlQuery);
+
+        $objStatement->bindValue('id', $id);
+
+        return $objStatement->execute();
+    }
 }

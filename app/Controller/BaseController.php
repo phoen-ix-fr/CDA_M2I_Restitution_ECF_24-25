@@ -19,6 +19,19 @@ abstract class BaseController
         $this->_smarty->setCompileDir(APP_ROOT . '/views_c');
     }
 
+    protected function displaySmarty(string $template)
+    {
+        if(array_key_exists('msg', $_SESSION)) {
+            
+            // Récuépration des messages "FLASH" (en session)
+            $this->_smarty->assign('flashes', $_SESSION['msg']);
+
+            unset($_SESSION['msg']); //< Les messages flashes ont été consummés
+        }
+
+        $this->_smarty->display($template);
+    }
+
     protected function generateCsrfToken(): string
     {
         $strToken = bin2hex(random_bytes(32));
