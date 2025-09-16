@@ -1,2 +1,6 @@
-./views_c
-./cache
+vendor/
+.env.*
+
+cache/*
+
+views_c/*
