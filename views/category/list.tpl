@@ -3,7 +3,7 @@
 {block name=main}
         <div class="d-flex justify-content-between mb-3">
             <h2>Gestion des catégories</h2>
-            <button class="btn btn-success">Ajouter une catégorie</button>
+            <a href="/index.php?controller=category&action=create" class="btn btn-success">Ajouter une catégorie</a>
         </div>
         <table class="table table-striped">
             <thead class="table-dark">

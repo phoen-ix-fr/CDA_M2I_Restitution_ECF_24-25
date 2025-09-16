@@ -71,6 +71,9 @@ class CategoryController extends BaseController
 
         }
 
+        $this->_smarty->assign('errors', $arrErrors); //< Transmet le tableau des erreurs à ma vue
+        $this->_smarty->assign('data', $_POST);
+        
         $this->_smarty->display('category/create.tpl');
     }
 }

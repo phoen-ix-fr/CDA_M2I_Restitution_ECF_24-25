@@ -7,15 +7,28 @@
     <a href="/index.php?controller=category&action=index" class="btn btn-success">Retourner à la liste des catégories</a>
 </div>
 
+{if isset($errors.db)}
+<div class="alert alert-danger">
+    {$errors.db}
+<div>
+{/if}
+
 <form action="/index.php?controller=category&action=create" method="POST">
 
     <div class="mb-3">
         <label for="name" class="form-label">Nom de la catégorie</label>
 
         <div class="input-group has-validation">
-            <input type="text" class="form-control" 
-                id="name" name="name" placeholder="Nom de la catégorie">
+            <input type="text" class="form-control {if isset($errors.name)}is-invalid{/if}" 
+                id="name" name="name" placeholder="Nom de la catégorie"
+                value="{$data.name??''}">
 
+            {if isset($errors.name)}
+            <div class="invalid-feedback">
+                {$errors.name}
+            </div>
+            {/if}
+        </div>
     </div>
 
     <button type="submit" class=" mt-3 btn btn-primary">Enregistrer</button>

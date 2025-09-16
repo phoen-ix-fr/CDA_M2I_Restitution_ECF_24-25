@@ -35,6 +35,29 @@ class CategoryModel
         return $arrObjCategories;
     }
 
+    public function findById(int $id): ?Category
+    {
+        $sqlQuery = "SELECT * FROM categories WHERE id = :id";
+
+        $objStatement = $this->_pdo->prepare($sqlQuery);
+
+        $objStatement->bindValue('id', $id);
+
+        $objStatement->execute();
+
+        $arrRawData = $objStatement->fetch();
+
+        if($arrRawData) {
+
+            $objCategory = new Category();
+            $objCategory->hydrate($arrRawData);
+
+            return $objCategory;
+        }
+
+        return null;
+    }
+
     public function findByName(string $name): ?Category
     {
         $sqlQuery = "SELECT * FROM categories WHERE name = :name";
@@ -58,17 +81,6 @@ class CategoryModel
         return null;
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public function insert(array $data): ?Category
     {
         $sqlQuery = "INSERT INTO categories (name) VALUES (:name);";
@@ -80,7 +92,14 @@ class CategoryModel
         $objStatement->execute();
 
         // On récupère la nouvelle catégorie créée ici :
+        $intLastId = $this->_pdo->lastInsertId();
 
+        $objNewCategory = $this->findById($intLastId);
+
+        if($objNewCategory) {
+            
+            return $objNewCategory;
+        }
 
         // On retourne NULL si la catégorie n'a été pas été créée/trouvée
         return null;
